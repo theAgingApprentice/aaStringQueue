@@ -1,8 +1,19 @@
-# aaStringQueue
+
+## Table of contents
+* [Overview](#Overview)
+* [Development Environment](#Development-Environment)
+* [Code Compatibility](#Code-Compatibility)
+* [Installing](#Installing)
+* [Running Tests](#Running-Tests)
+* [Versioning](#Versioning)
+* [Acknowledgements](Acknowledgements)
+* [Lisence](Lisence)
+
+## Overview
 
 This repository contains an Arduino library that provides your project with a [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) queue for character arrays (char[]).
 
-## Prerequisites
+## Development Environment
 This library was written using Microsoft's [Visual Studio Code](https://code.visualstudio.com/docs) source code editor in conjunction with the [PlatformIO](https://platformio.org/) plugin [embedded software](https://en.wikipedia.org/wiki/Embedded_software) application [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). If you use the default Arduino IDE then you probably should not use this library as it eskews that standard .INO file extentions in favour of .CPP extentions. 
 
 This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
@@ -22,14 +33,9 @@ This library has only been tested on the [Adafruit Huzzah32](https://learn.adafr
 
 At this time there are no automated tests for this application.
 
-
-## Contributing
-
-
-
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/va3wam/ZippiTwipi/tags). 
+We use [SemVer](http://semver.org/) for versioning. There is no stable version of this ibrary released yet. 
 
 ## Acknowledgements
 
