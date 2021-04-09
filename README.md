@@ -43,7 +43,8 @@ At this time there are no automated tests for this application.
 
 ## Releases
 
-We use [SemVer](http://semver.org/) for versioning for our release numbering scheme. There is no stable version of this library released at this time. 
+* We use [SemVer](http://semver.org/) for versioning for our release numbering scheme. 
+* There is no stable version of this library released at this time. 
 
 ## Acknowledgements
 
