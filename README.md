@@ -24,9 +24,8 @@ This library was written using the following tools:
 If you are using the standard Arduino IDE for your project then you should probably avoid using this library unless you are comfortable navigating the subtle differences bewteen how your envoronment works vs. how the environment used to create this library behaved.
 
 ## Arduino Library Dependencies
-This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
-
-The installation instructions below assume that you have [Git](https://git-scm.com/) installed on your computer.
+1. This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
+2. The installation instructions below assume that you have [Git](https://git-scm.com/) installed on your computer.
 
 ## Microprocessor Compatibility
 This library has only been tested on the [Adafruit Huzzah32](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather) development board containing the [Espressif ESP WROOM32 SOC](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf) featuring a pair of [Cadence/Xtensa®32-bit LX6 microprocessors](https://mirrobo.ru/wp-content/uploads/2016/11/Cadence_Tensillica_Xtensa_LX6_ds.pdf). 
