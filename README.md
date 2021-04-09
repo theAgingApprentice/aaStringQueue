@@ -1,11 +1,11 @@
 
 ## Table of contents
 * [Overview](#Overview)
-* [Development Environment](#Development-environment)
-* [Arduino Library Dependencies](Arduino-library-dependencies)
-* [Microprocessor Compatibility](#Microprocessor-compatibility)
+* [Development environment](#Development-environment)
+* [Arduino library dependencies](Arduino-library-dependencies)
+* [Microprocessor compatibility](#Microprocessor-compatibility)
 * [Installing](#Installing)
-* [Running Tests](#Running-tests)
+* [Running tests](#Running-tests)
 * [Versioning](#Versioning)
 * [Acknowledgements](Acknowledgements)
 * [Lisence](Lisence)
