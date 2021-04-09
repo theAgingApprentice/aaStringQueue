@@ -44,7 +44,7 @@ At this time there are no automated tests for this application.
 ## Releases
 
 * We use the [SemVer](http://semver.org/) numbering scheme for our releases. 
-* There is no stable release version of this library released at this time. 
+* There is no stable release of this library at this time. 
 
 ## Acknowledgements
 
