@@ -2,7 +2,7 @@
 ## Table of contents
 * [Overview](#Overview)
 * [Development environment](#Development-environment)
-* [Code dependencies](Code-dependencies)
+* [Code dependencies](#Code-dependencies)
 * [Microprocessor compatibility](#Microprocessor-compatibility)
 * [Installing](#Installing)
 * [Running tests](#Running-tests)
@@ -30,7 +30,7 @@ This library requires that your project include the following Arduino libraries:
 ## Microprocessor compatibility
 This library has only been tested on the [Adafruit Huzzah32](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather) development board containing the [Espressif ESP WROOM32 SOC](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf) featuring a pair of [Cadence/Xtensa®32-bit LX6 microprocessors](https://mirrobo.ru/wp-content/uploads/2016/11/Cadence_Tensillica_Xtensa_LX6_ds.pdf). 
 
-### Installing
+## Installing
 These instructions assume that you have [Git](https://git-scm.com/) installed on your computer.
 
 1. Navigate to the Arduino project directory on your computer.
