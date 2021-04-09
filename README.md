@@ -43,7 +43,7 @@ At this time there are no automated tests for this application.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. There is no stable version of this ibrary released yet. 
+We use [SemVer](http://semver.org/) for versioning. There is no stable version of this library released yet. 
 
 ## Acknowledgements
 
