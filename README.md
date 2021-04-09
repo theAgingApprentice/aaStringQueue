@@ -16,9 +16,8 @@ This repository contains an Arduino library that provides your project with a [F
 ## Development environment
 This library was written using the following tools:
 
-[<img src="/img/vscLogo.png" width="15" height="15">](https://code.visualstudio.com/docs) Microsoft's Visual Studio Code source code editor. 
-
-[<img src="/img/pioLogo.png" width="20" height="15">](https://platformio.org/) PlatformIO plugin [embedded software](https://en.wikipedia.org/wiki/Embedded_software) application [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). 
+* [<img src="/img/vscLogo.png" width="15" height="15">](https://code.visualstudio.com/docs) Microsoft's Visual Studio Code source code editor. 
+* [<img src="/img/pioLogo.png" width="20" height="15">](https://platformio.org/) PlatformIO plugin [embedded software](https://en.wikipedia.org/wiki/Embedded_software) application [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). 
 
 If you are using the standard Arduino IDE for your project then you should probably avoid using this library unless you are comfortable navigating the subtle differences bewteen how your envoronment bahaves and how the environment used to create this library behaved.
 
