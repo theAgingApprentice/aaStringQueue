@@ -35,6 +35,7 @@ These instructions assume that you have [Git](https://git-scm.com/) installed on
 
 1. Navigate to the Arduino project directory on your computer.
 2. Issue the command `git clone https://github.com/theAgingApprentice/aaStringQueue.git`.
+3. Issue the command `git remote`. If you get back the response *origin* then you are all set. If you get a blank response back then you must set up an association to the remote repository by issuing the command `git remote add origin {repository URL}` to set up the remote. 
 
 ## Running tests
 
