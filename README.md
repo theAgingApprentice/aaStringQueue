@@ -7,8 +7,8 @@
 * [Installing](#Installing)
 * [Running tests](#Running-tests)
 * [Versioning](#Versioning)
-* [Acknowledgements](Acknowledgements)
-* [Lisence](Lisence)
+* [Acknowledgements](#Acknowledgements)
+* [Lisence](#Lisence)
 
 ## Overview
 
@@ -34,7 +34,7 @@ This library has only been tested on the [Adafruit Huzzah32](https://learn.adafr
 1. Navigate to the Arduino project directory on your computer.
 2. Issue the command `git clone https://github.com/theAgingApprentice/aaStringQueue.git`.
 
-## Running the tests
+## Running tests
 
 At this time there are no automated tests for this application.
 
