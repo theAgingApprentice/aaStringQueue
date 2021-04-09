@@ -2,25 +2,21 @@
 
 This repository contains an Arduino library that provides your project with a [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) queue for character arrays (char[]).
 
-## Getting Started
+## Prerequisites
+This library was written using Microsoft's [Visual Studio Code](https://code.visualstudio.com/docs) source code editor in conjunction with the [PlatformIO](https://platformio.org/) plugin [embedded software](https://en.wikipedia.org/wiki/Embedded_software) application [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). If you use the default Arduino IDE then you probably should not use this library as it eskews that standard .INO file extentions in favour of .CPP extentions. 
 
-This section will provide you with guidance to help determine if this library is approppriate for your needs as well as how to add it to your project.    
+This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
 
-### Prerequisites
-This library was written using Microsoft's [Visual Studio Code](https://code.visualstudio.com/docs) source code editor in conjunction with the [PlatformIO](https://platformio.org/) [embedded software](https://en.wikipedia.org/wiki/Embedded_software) [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). If you use the defaut Arduino IDE then you probebly should not use this library. 
+The installation instructions below assume that you have [Git](https://git-scm.com/) installed on your computer.
 
-The code in this library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which is comes as part of the Arduino framework when building a project using Platform.io.
-
-The installation instructions assume that you have Git installed on your computer.
-
-### Code Compatibility
+## Code Compatibility
 
 This library has only been tested on the [Adafruit Huzzah32](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather) development board containing the [Espressif ESP WROOM32 SOC](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf) featuring a pair of [Cadence/Xtensa®32-bit LX6 microprocessors](https://mirrobo.ru/wp-content/uploads/2016/11/Cadence_Tensillica_Xtensa_LX6_ds.pdf). 
 
 ### Installing
 
-1. Navigate to the Arduino project directory on yur computer
-2. Issue the command git clone 
+1. Navigate to the Arduino project directory on your computer.
+2. Issue the command git clone https://github.com/theAgingApprentice/aaStringQueue.git.
 
 ## Running the tests
 
