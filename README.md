@@ -2,7 +2,7 @@
 ## Table of contents
 * [Overview](#Overview)
 * [Development environment](#Development-environment)
-* [Arduino library dependencies](Arduino-library-dependencies)
+* [Code dependencies](Code-dependencies)
 * [Microprocessor compatibility](#Microprocessor-compatibility)
 * [Installing](#Installing)
 * [Running tests](#Running-tests)
@@ -23,7 +23,7 @@ This library was written using the following tools:
 
 If you are using the standard Arduino IDE for your project then you should probably avoid using this library unless you are comfortable navigating the subtle differences bewteen how your envoronment works vs. how the environment used to create this library behaved.
 
-## Arduino library dependencies
+## Code dependencies
 1. This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
 2. The installation instructions below assume that you have [Git](https://git-scm.com/) installed on your computer.
 
