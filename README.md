@@ -14,7 +14,9 @@
 This repository contains an Arduino library that provides your project with a [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) queue for character arrays (char[]).
 
 ## Development Environment
-This library was written using Microsoft's [Visual Studio Code](https://code.visualstudio.com/docs) source code editor in conjunction with the [PlatformIO](https://platformio.org/) plugin [embedded software](https://en.wikipedia.org/wiki/Embedded_software) application [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). If you use the default Arduino IDE then you probably should not use this library as it eskews that standard .INO file extentions in favour of .CPP extentions. 
+This library was written using the following tools:
+<img src="/img/pioLogo.png" width="100" height="100">
+Microsoft's [Visual Studio Code](https://code.visualstudio.com/docs) source code editor in conjunction with the [PlatformIO](https://platformio.org/) plugin [embedded software](https://en.wikipedia.org/wiki/Embedded_software) application [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment). If you use the default Arduino IDE then you probably should not use this library as it eskews that standard .INO file extentions in favour of .CPP extentions. 
 
 This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
 
