@@ -11,7 +11,6 @@
 * [Lisence](#Lisence)
 
 ## Overview
-
 This repository contains an Arduino library that provides your project with a [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) queue for character arrays (char[]).
 
 ## Development environment
@@ -24,6 +23,7 @@ This library was written using the following tools:
 If you are using the standard Arduino IDE for your project then you should probably avoid using this library unless you are comfortable navigating the subtle differences bewteen how your envoronment works vs. how the environment used to create this library behaved.
 
 ## Code dependencies
+
 1. This library requires that your project includes the [Arduino Core library for ESP32](https://github.com/espressif/arduino-esp32) which comes as part of the Arduino framework when using Platform.io.
 2. The installation instructions below assume that you have [Git](https://git-scm.com/) installed on your computer.
 
