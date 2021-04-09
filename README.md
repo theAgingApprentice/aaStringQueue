@@ -16,7 +16,7 @@ This library has only been tested on the [Adafruit Huzzah32](https://learn.adafr
 ### Installing
 
 1. Navigate to the Arduino project directory on your computer.
-2. Issue the command git clone https://github.com/theAgingApprentice/aaStringQueue.git.
+2. Issue the command `git clone https://github.com/theAgingApprentice/aaStringQueue.git`.
 
 ## Running the tests
 
