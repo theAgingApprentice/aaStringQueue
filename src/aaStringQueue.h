@@ -21,6 +21,13 @@ class aaStringQueue // Define aaStringQueue class
       uint32_t getFreeHeap();
       uint32_t getCpuId();
       uint32_t getCpuClock();
+      bool isEmpty();
+      bool isFull();
+      int8_t getMaxSize();
+      int8_t getCount();
+      void flush();
+      void push(char*);
+      bool pop();
    private:
 }; //class aaStringQueue
 
