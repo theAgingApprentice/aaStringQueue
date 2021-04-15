@@ -74,31 +74,42 @@ void setup()
    char msg6[20] = "msg6";
    char msg7[20] = "msg7";
    char msg8[20] = "msg8";
-   char *p;
-   char myMsg[20];
-   p = myMsg;
    setupSerial(); // Set serial baud rate. 
    Serial.println("<setup> Start of setup");
+   Serial.println("<setup> Show buffer content before we start.");
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg1);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg2);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg3);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg4);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg5);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg6);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg7);
    cmdQueue.dumpBuffer();
+   Serial.println("<setup> Add a message to the buffer.");
    cmdQueue.push(msg8);
    cmdQueue.dumpBuffer();
-   cmdQueue.pop(p);
-   Serial.print("<setup> myMessage = ");
-   Serial.println(myMsg);
+   Serial.println("<setup> Pull a message from the buffer.");
+   char str[cmdQueue.getMaxBufferSize()];
+   cmdQueue.pop(str);
+   cmdQueue.dumpBuffer();
+   Serial.print("<setup> myMessage = "); Serial.println(str);
+   Serial.println("<setup> Clear the buffer.");
+   cmdQueue.flush();
+   cmdQueue.dumpBuffer();
    Serial.println("<setup> End of setup");
 } // setup()
 
