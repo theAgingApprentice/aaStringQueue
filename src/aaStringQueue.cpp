@@ -1,7 +1,7 @@
 /******************************************************************************
  * @file aaStringQueue.cpp
  *
- * @mainpage the Aging Apprentice microprcessor information class 
+ * @mainpage the Aging Apprentice Arduino FIFO String queue class 
  * 
  * @section intro_sec Introduction
  *
@@ -40,83 +40,154 @@
  *****************************************************************************/
 #include <aaStringQueue.h> // Header file for linking.
 
+// Define global variables.
+const int8_t BUFFER_MAX_SIZE = 5;
+const int8_t COMMAND_MAX_LENGTH = 20;
+char mqttCommandBuffer[BUFFER_MAX_SIZE][COMMAND_MAX_LENGTH] = { "", "", "", "", ""}; // Buffer.
+
 /**
- * @class Retrieve microprocessor configuration details from both FreeRTOS and 
- * the ESP32 Arduino framework.
+ * @class Provide a FIFO queue for Strings.
  * ==========================================================================*/
 aaStringQueue::aaStringQueue()
 {
 
-} //aaStringQueue::aaStringQueue()
+} // aaStringQueue::aaStringQueue()
 
 /**
- * @brief Returns the version number of the SDK used to build the binary.
- * @return cont char* ESP.getSdkVersion()   
+ * @brief Reports if the command queue is empty or not.
+ * @return bool true = it is empty, false = there is at least 1 entry in queue.   
  * ==========================================================================*/
-const char* aaStringQueue::getSDKVer()
+bool aaStringQueue::isEmpty()
 {
-   return ESP.getSdkVersion();
-} //aaStringQueue::getSDKVer()
+   if(_numCmdsBuffered == 0)
+   {
+      return true;
+   } //if
+   else
+   {
+      return false;
+   } //else
+} // aaStringQueue::isEmpty()
 
 /**
- * @brief Returns the revision number of the ESP32 chip.
- * @return uint32_t ESP.getChipRevision()   
+ * @brief Reports if the command queue is full or not.
+ * @return bool true = it is full, false = there is still room in the queue.   
  * ==========================================================================*/
-const char* aaStringQueue::getChipModel()
+bool aaStringQueue::isFull() 
 {
-   return ESP.getChipModel();
-} //aaStringQueue::getChipModel()
+   if(_numCmdsBuffered >= BUFFER_MAX_SIZE)
+   {
+      return true;
+   } //if
+   else
+   {
+      return false;
+   } //else
+} // aaStringQueue::isFull()
 
 /**
- * @brief Returns the revision number of the ESP32 chip.
- * @return uint32_t ESP.getChipRevision()   
+ * @brief Reports the maximum size of the queue.
+ * @return int8_t reports value of BUFFER_MAX_SIZE constant.   
  * ==========================================================================*/
-uint8_t aaStringQueue::getChipRevision()
+int8_t aaStringQueue::getMaxBufferSize() 
 {
-   return ESP.getChipRevision();
-} //aaStringQueue::getChipRevision()
+   return BUFFER_MAX_SIZE;
+} // aaStringQueue::getMaxSize()
 
 /**
- * @brief Returns the size of the binary file in bytes.
- * @return uint32_t ESP.getSketchSize()   
+ * @brief Reports the number of commands currently in the queue.
+ * @return int8_t reports value of the _numCmdsBuffered variable.   
  * ==========================================================================*/
-uint32_t aaStringQueue::getCodeSize()
+int8_t aaStringQueue::getCount() 
 {
-   return ESP.getSketchSize();
-} //aaStringQueue::getCodeSize()
+   return _numCmdsBuffered;
+} // aaStringQueue::getCount()
 
 /**
- * @brief Returns number of bytes of sorted memory the program can use.
- * @return uint32_t ESP.getFreeHeap()   
+ * @brief Reports the number of commands that were discarded.
+ * @details When the command buffer is full the oldest message is discarded 
+ * to make room for a newer message. 
+ * @return int8_t reports value of the _numCmdsLost variable.   
  * ==========================================================================*/
-uint32_t aaStringQueue::getFreeHeap()
+int8_t aaStringQueue::getLost() 
 {
-   return ESP.getFreeHeap();
-} //aaStringQueue::getFreeHeap()
+   return _numCmdsLost;
+} // aaStringQueue::getCount()
 
 /**
- * @brief Returns the current baud rate that the serial port is set to.
- * @return uint32_t Serial.baudRate()   
+ * @brief Clears the command queue.
+ * @details Actually leaves the values in memory but chnages the counter so 
+ * all slots are treated as empty.   
  * ==========================================================================*/
-uint32_t aaStringQueue::getSerialSpeed()
+void aaStringQueue::flush() // Clear command queue.
 {
-   return Serial.baudRate();
-} //aaStringQueue::getSerialSpeed()
+   _numCmdsBuffered = 0;
+} // aaStringQueue::flush()
 
 /**
- * @brief Returns the CPU ID of the application core.
- * @return uint32_t xPortGetCoreID()   
+ * @brief Shift command buffer rows down.
+ * @details Move each row of command buffer down leaving the top row empty.
  * ==========================================================================*/
-uint32_t aaStringQueue::getCpuId()
+void aaStringQueue::_shiftBuffer() // Shift content in buffer down one position.
 {
-   return xPortGetCoreID();
-} //aaStringQueue::getCpuId()
+   for(int i = BUFFER_MAX_SIZE - 1; i >= 0; i--)
+   {
+      strcpy((char*)mqttCommandBuffer[i], (const char *)mqttCommandBuffer[i - 1]);      
+   } // for
+} // aaStringQueue::_shiftBuffer()
 
-/**
- * @brief Returns the clock speed of the application core in Mhz.
- * @return uint32_t Serial.baudRate()   
- * ==========================================================================*/
-uint32_t aaStringQueue::getCpuClock()
+/** 
+ * @brief Sends the content of the buffer to the console. 
+ * =================================================================================*/
+void aaStringQueue::dumpBuffer()
 {
-   return getCpuFrequencyMhz();
-} //aaStringQueue::getCpuClock()
+   Serial.print("<aaStringQueue::dumpBuffer> Buffer size = "); Serial.println(_numCmdsBuffered);
+   Serial.print("<aaStringQueue::dumpBuffer> Lost messages = "); Serial.println(_numCmdsLost);
+   for(int i = 0; i <= BUFFER_MAX_SIZE - 1; i++)
+   {
+      Serial.print("<aaStringQueue::dumpBuffer> Row ");
+      Serial.print(i);
+      Serial.print(" = "); 
+      Serial.println(mqttCommandBuffer[i]);
+   } // for
+} // aaStringQueue::dumpBuffer()
+
+/** 
+ * @brief Adds a new command to the top of the queue.
+ * @details Shift all previous commands done in the queue and add thhe newest command
+ * to the top. If the queue is full then the bottom item (the odest one) gets dropped
+ * and is never processed. The variable _numCmdsLost is used as a counter tracks this 
+ * loss. 
+ * =================================================================================*/
+void aaStringQueue::push(char* newItem) // Add content to top of buffer.
+{
+   _shiftBuffer();
+   strcpy((char*)mqttCommandBuffer[0], newItem);
+   _numCmdsBuffered++;
+   if(_numCmdsBuffered > BUFFER_MAX_SIZE)
+   {
+      _numCmdsLost++;
+      _numCmdsBuffered = BUFFER_MAX_SIZE;
+   } //if
+} // aaStringQueue::push()
+
+/** 
+ * @brief Pulls a command off Adds a new command to the top of the queue.
+ * @details Shift all previous commands done in the queue and add thhe newest command
+ * to the top. If the queue is full then the bottom item (the odest one) gets dropped
+ * and is never processed. The variable _numCmdsLost is used as a counter tracks this 
+ * loss. 
+ * =================================================================================*/
+bool aaStringQueue::pop(char *msgPointer) // Pull content from the bottom of the buffer.
+{
+   if(_numCmdsBuffered > 0)
+   {
+      return false;
+   } // if
+   else
+   {
+      strcpy(msgPointer, mqttCommandBuffer[0]);
+      _numCmdsBuffered --;
+      return true;
+   } //else
+} // aaStringQueue::pop()
