@@ -124,7 +124,7 @@ use TravisCI.
 
 ## Examples
 There is an 
-[example sketch](https://github.com/theAgingApprentice/aaChip/blob/main/examples/simpleExample/simpleExample.cpp) 
+[example sketch](https://github.com/theAgingApprentice/aaStringQueue/blob/main/examples/simpleExample/simpleExample.cpp) 
 that shows you how to use this class.   
 
 ## Acknowledgements
