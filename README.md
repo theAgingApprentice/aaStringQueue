@@ -13,6 +13,7 @@
 * [Installing](#Installing)
 * [Running tests](#Running-tests)
 * [Releases](#Releases)
+* [Examples](#Examples)
 * [Acknowledgements](#Acknowledgements)
 
 ## Overview
