@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['aastringqueue_11',['aaStringQueue',['../classaa_string_queue.html',1,'']]]
+  ['aastringqueue_10',['aaStringQueue',['../classaa_string_queue.html',1,'']]]
 ];

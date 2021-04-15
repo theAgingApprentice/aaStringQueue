@@ -117,7 +117,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 @class Provide a FIFO queue for Strings.</h1>
 
 </div>
@@ -137,7 +137,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 @brief Sends the content of the buffer to the console.</h1>
 
 </div>
@@ -159,7 +159,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Clears the command queue. </p>
 <p>Actually leaves the values in memory but chnages the counter so </p>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 all slots are treated as empty.</h1>
 
 </div>
@@ -180,7 +180,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports the number of commands currently in the queue. </p>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 @return int8_t reports value of the _numCmdsBuffered variable.</h1>
 
 </div>
@@ -202,7 +202,7 @@ all slots are treated as empty.</h1>
 
 <p>Reports the number of commands that were discarded. </p>
 <p>When the command buffer is full the oldest message is discarded to make room for a newer message. </p>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 @return int8_t reports value of the _numCmdsLost variable.</h1>
 
 </div>
@@ -223,7 +223,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports the maximum size of the queue. </p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 @return int8_t reports value of BUFFER_MAX_SIZE constant.</h1>
 
 </div>
@@ -244,7 +244,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports if the command queue is empty or not. </p>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md18"></a>
 @return bool true = it is empty, false = there is at least 1 entry in queue.</h1>
 
 </div>
@@ -265,7 +265,7 @@ all slots are treated as empty.</h1>
 </div><div class="memdoc">
 
 <p>Reports if the command queue is full or not. </p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 @return bool true = it is full, false = there is still room in the queue.</h1>
 
 </div>
@@ -289,7 +289,7 @@ all slots are treated as empty.</h1>
 <p>Puts oldest content from the the buffer into the specified char array. </p>
 <p>Return the oldest command in the buffer. The variable _numCmdsBuffered is used to track the number of buffered command left. Note that the buffer index starts at 0 so we must subtract one from the index pointer to point at the corresponding slot. This means that subtracting one from the index counter first both points at the right slot and et the total number of buffered commands correctly when we are popping one off the stack. <br  />
  </p>
-<h1><a class="anchor" id="autotoc_md28"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 @param char* A pointer to the character array where the buffer command is placed.</h1>
 
 </div>
@@ -312,7 +312,7 @@ all slots are treated as empty.</h1>
 
 <p>Adds a new command to the top of the queue. </p>
 <p>Shift all previous commands done in the queue and add thhe newest command to the top. If the queue is full then the bottom item (the odest one) gets dropped and is never processed. The variable _numCmdsLost is used as a counter tracks this </p>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 loss.</h1>
 
 </div>

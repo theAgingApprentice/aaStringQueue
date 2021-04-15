@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['getcount_4',['getCount',['../classaa_string_queue.html#a996ed73c8d3fec5f0fad7bee5c1e92ae',1,'aaStringQueue']]],
-  ['getlost_5',['getLost',['../classaa_string_queue.html#a3fa92de83d8935121d8cd5ad45f55cf7',1,'aaStringQueue']]],
-  ['getmaxbuffersize_6',['getMaxBufferSize',['../classaa_string_queue.html#a4bb0e7b3b8d366d55c77f2cde582381a',1,'aaStringQueue']]]
+  ['isempty_6',['isEmpty',['../classaa_string_queue.html#aa65d841fb2a50003c726436d5fb43118',1,'aaStringQueue']]],
+  ['isfull_7',['isFull',['../classaa_string_queue.html#a8a3a3ce7072f96ac8c5baefdb4566576',1,'aaStringQueue']]]
 ];
