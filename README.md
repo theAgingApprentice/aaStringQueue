@@ -16,9 +16,14 @@
 * [Acknowledgements](#Acknowledgements)
 
 ## Overview
-This repository contains a class that provides a FIFO queue for char[]
-arrays. It is part of a series of classes made to support a standard set of 
-APIs for experimental robot platforms. 
+This repository contains a class that provides a FIFO queue for char[] arrays.
+Values get added to the top of the queue, older values already in the queue
+get pushed down the buffer, and if the number of buffered commands exceeds the 
+maximum allowed buffer size then the oldest message gets dropped and a counter 
+notes that loss. Command are pulled from the bottom of the queue. THis results
+in the oldest messages being pulled first which is what makes this a FIFO 
+buffer. This class is part of a series of classes made to support a standard 
+set of APIs for experimental robot platforms. 
 
 ## Dependencies
 This class depends on <a href="https://github.com/espressif/arduino-esp32">
