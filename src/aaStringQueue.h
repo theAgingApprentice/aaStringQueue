@@ -24,7 +24,7 @@ class aaStringQueue // Define aaStringQueue class
       void dumpBuffer(); // Sends the content of the buffer to the console.
       void flush(); // Clear command queue.
       void push(char*); // Add content to top of buffer.
-      bool pop(char *); // Pull content from the bottom of the buffer.
+      void pop(char*); // Puts oldest content from the the buffer into the specified char array.
    private:
       void _shiftBuffer(); // Shift content in buffer down one position.
       int8_t _numCmdsLost = 0; // Count messages dropped off the bottom of the buffer. 
