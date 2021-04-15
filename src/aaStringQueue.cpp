@@ -121,6 +121,10 @@ int8_t aaStringQueue::getLost()
  * ==========================================================================*/
 void aaStringQueue::flush() // Clear command queue.
 {
+   for(int i = BUFFER_MAX_SIZE - 1; i >= 0; i--)
+   {
+      memset(mqttCommandBuffer[i],0,COMMAND_MAX_LENGTH);      
+   } // for
    _numCmdsBuffered = 0;
 } // aaStringQueue::flush()
 
@@ -172,22 +176,21 @@ void aaStringQueue::push(char* newItem) // Add content to top of buffer.
 } // aaStringQueue::push()
 
 /** 
- * @brief Pulls a command off Adds a new command to the top of the queue.
- * @details Shift all previous commands done in the queue and add thhe newest command
- * to the top. If the queue is full then the bottom item (the odest one) gets dropped
- * and is never processed. The variable _numCmdsLost is used as a counter tracks this 
- * loss. 
+ * @brief Puts oldest content from the the buffer into the specified char array.
+ * @details Return the oldest command in the buffer. The variable _numCmdsBuffered is
+ * used to track the number of buffered command left. Note that the buffer index 
+ * starts at 0 so we must subtract one from the index pointer to point at the 
+ * corresponding slot. This means that subtracting one from the index counter first 
+ * both points at the right slot and et the total number of buffered commands 
+ * correctly when we are popping one off the stack.  
+ * @param char* A pointer to the character array where the buffer command is placed.
  * =================================================================================*/
-bool aaStringQueue::pop(char *msgPointer) // Pull content from the bottom of the buffer.
+void aaStringQueue::pop(char* dest)
 {
    if(_numCmdsBuffered > 0)
    {
-      return false;
+      _numCmdsBuffered --; // Reduce count and aligns index to 0 based index slot.
+      strcpy(dest, (const char*)mqttCommandBuffer[_numCmdsBuffered]); // Pass command. 
+      memset(mqttCommandBuffer[_numCmdsBuffered], 0, COMMAND_MAX_LENGTH); // Clear slot.
    } // if
-   else
-   {
-      strcpy(msgPointer, mqttCommandBuffer[0]);
-      _numCmdsBuffered --;
-      return true;
-   } //else
 } // aaStringQueue::pop()
