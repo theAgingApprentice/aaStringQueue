@@ -8,29 +8,29 @@
 
 #include <Arduino.h> // Arduino Core for ESP32. Comes with Platform.io
 
+// Declare global variablles.
+extern const int8_t BUFFER_MAX_SIZE;
+extern const int8_t COMMAND_MAX_LENGTH;
+
 class aaStringQueue // Define aaStringQueue class 
 {
    public:
-      aaStringQueue(); // Constructor
-      void cfgToConsole();
-      const char* getSDKVer();
-      const char* getChipModel();
-      uint8_t getChipRevision();
-      uint32_t getSerialSpeed();
-      uint32_t getCodeSize();
-      uint32_t getFreeHeap();
-      uint32_t getCpuId();
-      uint32_t getCpuClock();
-      bool isEmpty();
-      bool isFull();
-      int8_t getMaxSize();
-      int8_t getCount();
-      void flush();
-      void push(char*);
-      bool pop();
+      aaStringQueue(); // Class constructor.
+      bool isEmpty(); // Check if buffer is empty.
+      bool isFull(); // Check if buffer is full.
+      int8_t getMaxBufferSize(); // Return max size of command buffer.
+      int8_t getCount(); // Return the current count of commands buffered. 
+      int8_t getLost(); // Return the number of commands that fell off the buffer. 
+      void dumpBuffer(); // Sends the content of the buffer to the console.
+      void flush(); // Clear command queue.
+      void push(char*); // Add content to top of buffer.
+      bool pop(char *); // Pull content from the bottom of the buffer.
    private:
+      void _shiftBuffer(); // Shift content in buffer down one position.
+      int8_t _numCmdsLost = 0; // Count messages dropped off the bottom of the buffer. 
+      int8_t _numCmdsBuffered = 0; // Count messages currently in the buffer. 
 }; //class aaStringQueue
 
-extern aaStringQueue appCore; // Expose all public variables and methods for libraries.
+extern aaStringQueue cmdBuffer; // Expose all public variables and methods for libraries.
 
 #endif // End of precompiler protected code block.
