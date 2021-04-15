@@ -43,12 +43,12 @@
  * IN THE SOFTWARE.  
  *****************************************************************************/ 
 #include <Arduino.h> // Arduino Core for ESP32. Comes with Platform.io.
-#include <aaChip.h> // Required for retrieving CPU details.
+#include <aaStringQueue.h> // Required for retrieving CPU details.
 
 /**
  * Define global objects.
  * =================================================================================*/
-aaChip appCore; // Instantiate the aaChip object.
+aaStringQueue cmdQueue; // Instantiate the command queue.
 
 /**
  * @brief Initialize the serial output with the specified baud rate measured in bits 
@@ -61,47 +61,46 @@ void setupSerial()
    while (!Serial); // Wait for Serial port to be ready.
 } //setupSerial()
 
-/**
- * @brief Send detailed chip configuration information to the console.
- * @details The ESP32-D0WDQ6 chip has dual Tensilica LX6 micro controllers. All WiFi 
- * logic runs on the PRO_CPU (core0) aka the processor core. This Arduino firmware 
- * runs on the APP_CPU (core1) aka the application core. 
- * @note: From https://esp32.com/viewtopic.php?t=8558 - The initial design for the 
- * ESP32 called for an asymmetric multiprocessor setup, with CPU0 running all the 
- * PROtocol handling code, while the APPlication would run on CPU1. We changed that to 
- * a symmetric multiprocessor setup later on, and at the moment the two CPUs are (with 
- * very few small exceptions) fully inter-exchangable, and the PRO and APP names are 
- * nothing but some names remaining from the earlier design.      
- * ==================================================================================*/
-void cfgToConsole()
-{
-   Serial.println("<cfgToConsole> Microprocessor information:");  
-   Serial.print("<cfgToConsole> ... Chip model = "); 
-   Serial.println(appCore.getChipModel()); 
-   Serial.print("<cfgToConsole> ... Chip revision = "); 
-   Serial.println(appCore.getChipRevision()); 
-   Serial.print("<cfgToConsole> ... Arduino core = "); 
-   Serial.println(appCore.getCpuId());
-   Serial.print("<cfgToConsole> ... Arduino core clock frequency = "); 
-   Serial.print(appCore.getCpuClock()); Serial.println(" MHz");
-   Serial.print("<cfgToConsole> ... SDK version = "); 
-   Serial.println(appCore.getSDKVer()); 
-   Serial.print("<cfgToConsole> ... Sketch size = "); 
-   Serial.print(appCore.getCodeSize()); Serial.println(" bytes");  
-   Serial.print("<cfgToConsole> ... Free heap = "); 
-   Serial.print(appCore.getFreeHeap()); Serial.println(" bytes"); 
-   Serial.print("<cfgToConsole> ... Serial baud rate = "); 
-   Serial.print(appCore.getSerialSpeed()); Serial.println(" Hz");
-} //cfgToConsole()
-
 /** 
  * @brief Arduino mandatory function #1. Runs once at boot. 
  * =================================================================================*/
 void setup()
 {
-   setupSerial(); // Sonfigure serial port.
-   cfgToConsole(); // Dump info about the processor Arduino is runing on.
-} //setup()
+   char msg1[20] = "msg1";
+   char msg2[20] = "msg2";
+   char msg3[20] = "msg3";
+   char msg4[20] = "msg4";
+   char msg5[20] = "msg5";
+   char msg6[20] = "msg6";
+   char msg7[20] = "msg7";
+   char msg8[20] = "msg8";
+   char *p;
+   char myMsg[20];
+   p = myMsg;
+   setupSerial(); // Set serial baud rate. 
+   Serial.println("<setup> Start of setup");
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg1);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg2);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg3);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg4);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg5);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg6);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg7);
+   cmdQueue.dumpBuffer();
+   cmdQueue.push(msg8);
+   cmdQueue.dumpBuffer();
+   cmdQueue.pop(p);
+   Serial.print("<setup> myMessage = ");
+   Serial.println(myMsg);
+   Serial.println("<setup> End of setup");
+} // setup()
 
 /**
  * @brief Arduino mandatory function #2. Runs continually.
